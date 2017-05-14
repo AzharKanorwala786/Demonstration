@@ -1,0 +1,59 @@
+﻿@model Demonstartion.tblSignUpDetail
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            float: right;
+            margin-bottom: 5px;
+        }
+    </style>
+    @Styles.Render("~/Content/Stylecss")
+    <title>Logon</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { id = "msform" }))
+        {
+            <fieldset>
+                <h2 class="fs-title">Login</h2>
+                @Html.TextBoxFor(m => m.Username, new { @class = "", @placeholder = "Username" })
+
+                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "error" })
+
+                @Html.TextBoxFor(m => m.Password, new { @class = "", @placeholder = "Password" })
+
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "error" })
+
+                <input type="submit" class="submit action-button" value="Submit" />
+
+            </fieldset>
+        }
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/stylejs")
+    @Scripts.Render("~/bundles/jqueryval")
+    @if (@ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                alert("@ViewBag.Message")
+            });
+        </script>
+    }
+</body>
+</html>

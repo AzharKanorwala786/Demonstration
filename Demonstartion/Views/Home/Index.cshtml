@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-md-12">
+        
+        <h4>Web Service Integration Demo</h4><br />
+        <h5><b>Enter IP Address to Find the Home Location</b></h5>
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        @Html.TextBox("IPAddress",null,new { @class = "form-control"})
+        <br />
+        <input type="submit" value="Submit" class="btn btn-default" /><br /><br />
+        <b> @ViewBag.Country</b>
+        <hr />
+    }
+    </div>
+  </div>
+ <div class="row">
+
+     <div class="col-md-12">
+         <h4>Simple Web API Demonstartion</h4><br />
+         <h5><b>Just Enter Your Name</b></h5>
+
+         <input type="text" id="txtName" class="form-control"/><br />
+
+         <input type="button" id="btnGet" class="btn btn-primary" value="Get Current Time" />
+
+     </div>
+
+ </div>
+
+</div>

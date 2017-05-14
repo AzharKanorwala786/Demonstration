@@ -1,0 +1,116 @@
+﻿@model Demonstartion.tblSignUpDetail
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            float:right;
+            margin-bottom:5px;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignUp</title>
+    @Styles.Render("~/Content/Stylecss")
+</head>
+
+<body>
+    <div> 
+        @using (Html.BeginForm("Index", "User", FormMethod.Post, new { id = "msform" }))
+        {
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Account Setup</li>
+                <li>Social Profiles</li>
+                <li>Personal Details</li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset>
+                <h2 class="fs-title">Create your account</h2>
+                <h3 class="fs-subtitle">This is step 1</h3>
+                @Html.TextBoxFor(m => m.Username,new { @class = "",@placeholder = "Username" })
+
+                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "error" })
+ 
+                @Html.TextBoxFor(m => m.Password, new { @class = "", @placeholder = "Password" })
+
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "error" })
+       
+                @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "", @placeholder = "Confirm Password" })
+
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "error" })
+
+                <input type="button" name="next" class="next action-button" value="Next" />
+                
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Social Profiles</h2>
+                <h3 class="fs-subtitle">Your presence on the social network</h3>
+
+                @Html.TextBoxFor(m => m.SocialHandle, new { @class = "", @placeholder = "Twitter" })
+
+                @Html.ValidationMessageFor(m => m.SocialHandle, "", new { @class = "error" })
+
+                @Html.TextBoxFor(m => m.SocialHandle, new { @class = "", @placeholder = "Facebook" })
+
+                @Html.ValidationMessageFor(m => m.SocialHandle, "", new { @class = "error" })
+
+                @Html.TextBoxFor(m => m.SocialHandle, new { @class = "", @placeholder = "Google Plus" })
+
+                @Html.ValidationMessageFor(m => m.SocialHandle, "", new { @class = "error" })
+
+                <input type="button" name="previous" class="previous action-button" value="Previous" />
+                <input type="button" name="next" class="next action-button" value="Next" />
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Personal Details</h2>
+                <h3 class="fs-subtitle">We will never sell it</h3>
+  
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "", @placeholder = "First Name" })
+
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "error" })
+
+                @Html.TextBoxFor(m => m.LastName, new { @class = "", @placeholder = "Last Name" })
+
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "error" })
+
+                @Html.TextBoxFor(m => m.Email, new { @class = "", @placeholder = "Email" })
+
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "error" })
+
+                @Html.TextBoxFor(m => m.Phone, new { @class = "", @placeholder = "Phone" })
+
+                @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "error" })
+
+            <input type="button" name="previous" class="previous action-button" value="Previous" />  
+            <input type="submit" class="submit action-button" value="Submit" />
+            </fieldset>
+            @*<div>Already a User @Html.ActionLink("Login", "Login", "User", new { @class = "" }, null)</div>*@
+        }
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/stylejs")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/custom")
+    @Scripts.Render("~/bundles/jqueryvalub")
+    @if (@ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                alert("@ViewBag.Message")
+            });
+        </script>
+    }
+</body>
+</html>
